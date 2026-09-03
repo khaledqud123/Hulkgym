@@ -1,0 +1,3689 @@
+:root{
+  --black:#030303;
+  --black2:#070707;
+  --panel:#0c0c0c;
+  --panel2:#111;
+  --lime:#a6ff00;
+  --lime-light:#d9ff91;
+  --white:#f5f5f5;
+  --gray:#8b8b8b;
+  --dark-gray:#444;
+  --line:rgba(255,255,255,.09);
+  --shadow:0 30px 90px rgba(0,0,0,.65);
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:"Inter",Arial,sans-serif;
+  overflow-x:hidden;
+  letter-spacing:normal;
+}
+
+body[dir="rtl"]{
+  font-family:"Noto Kufi Arabic","Tahoma","Arial",sans-serif;
+  letter-spacing:0 !important;
+}
+
+body[dir="rtl"] *{
+  letter-spacing:0 !important;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+::selection{
+  background:var(--lime);
+  color:#000;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+  min-height:80px;
+  padding:0 5vw;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:25px;
+
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+
+  z-index:1000;
+
+  background:rgba(3,3,3,.87);
+  backdrop-filter:blur(20px);
+
+  border-bottom:1px solid var(--line);
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-1px;
+  white-space:nowrap;
+}
+
+body[dir="rtl"] .logo{
+  letter-spacing:0;
+}
+
+.logo span{
+  color:var(--lime);
+}
+
+.navbar nav{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.navbar nav a{
+  color:#aaa;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  transition:.25s;
+  white-space:nowrap;
+}
+
+.navbar nav a:hover{
+  color:var(--lime);
+}
+
+.language-toggle{
+  height:36px;
+  padding:6px 10px;
+
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  color:#fff;
+  background:#101010;
+
+  border:1px solid var(--line);
+  border-radius:50px;
+
+  font-size:8px;
+  font-weight:900;
+}
+
+.language-switch{
+  width:32px;
+  height:17px;
+  padding:2px;
+
+  background:#292929;
+  border-radius:20px;
+}
+
+.language-switch i{
+  display:block;
+
+  width:13px;
+  height:13px;
+
+  background:var(--lime);
+  border-radius:50%;
+
+  transition:.3s;
+}
+
+body[dir="rtl"] .language-switch i{
+  transform:translateX(15px);
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+.section{
+  padding:125px 7vw;
+  position:relative;
+}
+
+.section-heading{
+  max-width:700px;
+}
+
+.section-heading.center{
+  margin:0 auto 70px;
+  text-align:center;
+}
+
+.eyebrow{
+  margin-bottom:17px;
+
+  color:var(--lime);
+
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:3px;
+}
+
+body[dir="rtl"] .eyebrow{
+  letter-spacing:0;
+}
+
+h2{
+  font-size:clamp(48px,7vw,95px);
+  line-height:.9;
+
+  letter-spacing:-5px;
+
+  font-weight:900;
+}
+
+body[dir="rtl"] h2{
+  letter-spacing:0;
+  line-height:1.15;
+}
+
+h2 span{
+  color:var(--lime);
+}
+
+.btn{
+  min-height:48px;
+  padding:0 24px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid var(--lime);
+  border-radius:5px;
+
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.4px;
+
+  transition:.25s;
+}
+
+body[dir="rtl"] .btn{
+  letter-spacing:0;
+}
+
+.btn.primary{
+  color:#000;
+  background:var(--lime);
+}
+
+.btn.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 15px 35px rgba(166,255,0,.2);
+}
+
+.btn.secondary{
+  color:#fff;
+  background:#111;
+  border-color:#444;
+}
+
+.btn.secondary:hover{
+  color:var(--lime);
+  border-color:var(--lime);
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+  min-height:100vh;
+  padding:150px 7vw 80px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid{
+  position:absolute;
+  inset:0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+  background-size:70px 70px;
+
+  mask-image:linear-gradient(to bottom,#000,transparent);
+}
+
+.hero-content{
+  position:relative;
+  z-index:3;
+}
+
+.hero h1{
+  font-size:clamp(70px,10vw,150px);
+  line-height:.79;
+  letter-spacing:-9px;
+  font-weight:900;
+}
+
+body[dir="rtl"] .hero h1{
+  letter-spacing:0;
+  line-height:1;
+}
+
+.hero h1 span{
+  color:var(--lime);
+}
+
+.hero-description{
+  max-width:520px;
+  margin:35px 0;
+
+  color:#999;
+
+  line-height:1.8;
+  font-size:14px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.hero-visual{
+  height:620px;
+
+  position:relative;
+
+  display:grid;
+  place-items:center;
+}
+
+.hero-orb{
+  width:420px;
+  height:420px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #e4ffad,
+      #9ae900 28%,
+      #385800 55%,
+      #050505 74%
+    );
+
+  box-shadow:
+    0 0 90px rgba(166,255,0,.15),
+    inset -60px -70px 100px #000;
+
+  animation:heroFloat 5s ease-in-out infinite;
+}
+
+.hero-glow{
+  position:absolute;
+
+  width:450px;
+  height:450px;
+
+  background:rgba(166,255,0,.1);
+  border-radius:50%;
+
+  filter:blur(80px);
+}
+
+.hero-ring{
+  position:absolute;
+
+  border:1px solid rgba(166,255,0,.25);
+  border-radius:50%;
+
+  transform:rotateX(65deg) rotateY(20deg);
+}
+
+.ring-one{
+  width:520px;
+  height:260px;
+}
+
+.ring-two{
+  width:650px;
+  height:320px;
+
+  opacity:.4;
+
+  transform:rotateX(65deg) rotateY(-25deg);
+}
+
+.hero-floating-card{
+  position:absolute;
+
+  padding:18px;
+
+  background:rgba(10,10,10,.82);
+
+  border:1px solid var(--line);
+
+  backdrop-filter:blur(15px);
+}
+
+.hero-floating-card strong{
+  display:block;
+
+  color:var(--lime);
+
+  font-size:30px;
+}
+
+.hero-floating-card span{
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+.card-one{
+  right:5%;
+  bottom:80px;
+}
+
+.card-two{
+  left:5%;
+  top:100px;
+}
+
+@keyframes heroFloat{
+
+  0%,100%{
+    transform:translateY(0) rotate(0);
+  }
+
+  50%{
+    transform:translateY(-16px) rotate(2deg);
+  }
+
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-section{
+  background:#080808;
+}
+
+.about-grid{
+  margin-top:70px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:100px;
+}
+
+.about-copy{
+  max-width:570px;
+}
+
+.about-copy p{
+  margin-bottom:25px;
+
+  color:#999;
+
+  line-height:1.8;
+  font-size:15px;
+}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat-card{
+  min-height:170px;
+  padding:25px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  background:#101010;
+
+  border:1px solid var(--line);
+
+  transition:.3s;
+}
+
+.stat-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--lime);
+}
+
+.stat-card strong{
+  color:var(--lime);
+  font-size:38px;
+}
+
+.stat-card span{
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .stat-card span{
+  letter-spacing:0;
+}
+
+
+/* =====================================================
+   BEGINNER HUB
+===================================================== */
+
+.beginner-section{
+  background:
+    radial-gradient(circle at 10% 20%,rgba(166,255,0,.05),transparent 25%),
+    #040404;
+}
+
+.anatomy-layout{
+  max-width:1500px;
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:210px minmax(430px,1fr) 370px;
+
+  gap:30px;
+
+  align-items:center;
+}
+
+
+/* MUSCLE MENU */
+
+.muscle-menu{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.view-buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  margin-bottom:12px;
+}
+
+.view-btn,
+.muscle-btn{
+  background:#0c0c0c;
+  color:#888;
+  border:1px solid var(--line);
+}
+
+.view-btn{
+  height:38px;
+
+  font-size:8px;
+  font-weight:900;
+
+  transition:.25s;
+}
+
+.view-btn.active,
+.muscle-btn.active{
+  color:#000;
+  background:var(--lime);
+  border-color:var(--lime);
+}
+
+.muscle-btn{
+  min-height:55px;
+  padding:0 13px;
+
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+
+  text-align:left;
+
+  font-size:10px;
+  font-weight:900;
+
+  transition:.25s;
+}
+
+body[dir="rtl"] .muscle-btn{
+  text-align:right;
+}
+
+.muscle-btn:hover{
+  color:var(--lime);
+  border-color:var(--lime);
+}
+
+.muscle-btn.active:hover{
+  color:#000;
+}
+
+.workout-icon{
+  width:25px;
+
+  color:var(--lime);
+
+  text-align:center;
+
+  font-size:17px;
+}
+
+.muscle-btn.active .workout-icon{
+  color:#000;
+}
+
+
+/* ANATOMY STAGE */
+
+.anatomy-stage{
+  height:720px;
+
+  position:relative;
+
+  display:grid;
+  place-items:center;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 50% 45%,rgba(166,255,0,.09),transparent 35%),
+    linear-gradient(145deg,#111,#050505);
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow);
+}
+
+.stage-title{
+  position:absolute;
+  top:22px;
+  left:25px;
+
+  color:#444;
+
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+
+  z-index:10;
+}
+
+.anatomy-stage:before,
+.anatomy-stage:after{
+  content:"";
+
+  position:absolute;
+
+  border:1px solid rgba(166,255,0,.07);
+
+  border-radius:50%;
+}
+
+.anatomy-stage:before{
+  width:650px;
+  height:650px;
+}
+
+.anatomy-stage:after{
+  width:500px;
+  height:500px;
+}
+
+
+/* HUMAN */
+
+.human-body{
+  width:270px;
+  height:640px;
+
+  position:relative;
+
+  z-index:5;
+
+  filter:
+    drop-shadow(0 25px 25px rgba(0,0,0,.8))
+    drop-shadow(0 0 15px rgba(255,255,255,.04));
+
+  transition:.3s;
+}
+
+.human-head{
+  width:73px;
+  height:89px;
+
+  position:absolute;
+  top:0;
+  left:98px;
+
+  border-radius:45% 45% 48% 48%;
+
+  background:
+    linear-gradient(
+      120deg,
+      #e6e6e6 0%,
+      #a4a4a4 40%,
+      #666 70%,
+      #292929
+    );
+
+  box-shadow:
+    inset -12px -10px 18px #202020;
+}
+
+.human-head:after{
+  content:"";
+
+  position:absolute;
+
+  width:20px;
+  height:10px;
+
+  left:26px;
+  bottom:18px;
+
+  border-bottom:2px solid #444;
+  border-radius:50%;
+}
+
+.ear{
+  position:absolute;
+
+  width:11px;
+  height:20px;
+
+  top:35px;
+
+  background:#888;
+
+  border-radius:50%;
+}
+
+.ear.left{
+  left:-6px;
+}
+
+.ear.right{
+  right:-6px;
+}
+
+.human-neck{
+  width:43px;
+  height:58px;
+
+  position:absolute;
+
+  top:70px;
+  left:113px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #555,
+      #c9c9c9 45%,
+      #666
+    );
+}
+
+.human-torso{
+  width:148px;
+  height:260px;
+
+  position:absolute;
+
+  top:108px;
+  left:61px;
+
+  overflow:hidden;
+
+  border-radius:45px 45px 27px 27px;
+
+  background:
+    linear-gradient(
+      105deg,
+      #444,
+      #bcbcbc 38%,
+      #888 58%,
+      #333
+    );
+
+  box-shadow:
+    inset -20px -15px 25px #202020;
+}
+
+
+/* MUSCLES */
+
+.zone{
+  position:absolute;
+
+  transition:
+    .35s ease,
+    box-shadow .35s ease,
+    transform .35s ease;
+}
+
+.zone.highlight{
+  background:
+    radial-gradient(
+      circle,
+      #efffc8,
+      var(--lime) 45%,
+      #628e00
+    ) !important;
+
+  box-shadow:
+    0 0 22px rgba(166,255,0,.8),
+    inset 0 0 10px rgba(255,255,255,.25);
+
+  transform:scale(1.08);
+
+  z-index:10;
+}
+
+
+/* TRAPS */
+
+.trapezius{
+  width:82px;
+  height:60px;
+
+  top:2px;
+  left:33px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #555,
+      #c9c9c9,
+      #555
+    );
+
+  clip-path:
+    polygon(
+      20% 0,
+      80% 0,
+      100% 100%,
+      0 100%
+    );
+}
+
+
+/* SHOULDERS */
+
+.shoulder{
+  width:57px;
+  height:62px;
+
+  top:17px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 40% 30%,
+      #ccc,
+      #777 55%,
+      #3b3b3b
+    );
+}
+
+.shoulder.left{
+  left:-27px;
+}
+
+.shoulder.right{
+  right:-27px;
+}
+
+
+/* CHEST */
+
+.chest{
+  width:62px;
+  height:59px;
+
+  top:35px;
+
+  background:
+    radial-gradient(
+      ellipse at 35% 30%,
+      #d4d4d4,
+      #858585 60%,
+      #444
+    );
+
+  border-radius:60% 30% 45% 45%;
+}
+
+.chest.left{
+  left:8px;
+}
+
+.chest.right{
+  right:8px;
+
+  transform:scaleX(-1);
+}
+
+
+/* LATS */
+
+.lats{
+  display:none;
+
+  width:130px;
+  height:170px;
+
+  top:35px;
+  left:9px;
+
+  border-radius:40% 40% 35% 35%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #4b4b4b,
+      #bdbdbd,
+      #444
+    );
+}
+
+
+/* ABS */
+
+.abs{
+  width:48px;
+  height:35px;
+
+  left:50px;
+
+  border-radius:8px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #555,
+      #c0c0c0,
+      #444
+    );
+}
+
+.abs-one{
+  top:94px;
+}
+
+.abs-two{
+  top:133px;
+}
+
+.abs-three{
+  top:172px;
+}
+
+
+/* OBLIQUES */
+
+.oblique{
+  width:31px;
+  height:125px;
+
+  top:84px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #414141,
+      #a5a5a5,
+      #353535
+    );
+}
+
+.oblique.left{
+  left:5px;
+}
+
+.oblique.right{
+  right:5px;
+}
+
+
+/* ARMS */
+
+.human-arm{
+  width:62px;
+  height:270px;
+
+  position:absolute;
+
+  top:112px;
+
+  z-index:4;
+}
+
+.left-arm{
+  left:-1px;
+}
+
+.right-arm{
+  right:-1px;
+}
+
+.arm-muscle.upper{
+  width:44px;
+  height:108px;
+
+  position:absolute;
+
+  border-radius:40px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #464646,
+      #c6c6c6,
+      #444
+    );
+}
+
+.left-arm .upper{
+  right:8px;
+}
+
+.right-arm .upper{
+  left:8px;
+}
+
+.arm-muscle.fore{
+  width:38px;
+  height:120px;
+
+  top:92px;
+
+  position:absolute;
+
+  border-radius:35px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #4c4c4c,
+      #b8b8b8,
+      #414141
+    );
+}
+
+.left-arm .fore{
+  right:11px;
+}
+
+.right-arm .fore{
+  left:11px;
+}
+
+.human-hand{
+  width:34px;
+  height:45px;
+
+  position:absolute;
+  bottom:0;
+
+  display:flex;
+  justify-content:center;
+  gap:2px;
+
+  padding-top:7px;
+
+  background:#777;
+
+  border-radius:45%;
+}
+
+.left-arm .human-hand{
+  right:13px;
+}
+
+.right-arm .human-hand{
+  left:13px;
+}
+
+.human-hand span{
+  width:4px;
+  height:15px;
+
+  background:#aaa;
+
+  border-radius:5px;
+}
+
+
+/* LEGS */
+
+.human-legs{
+  width:148px;
+  height:285px;
+
+  position:absolute;
+
+  top:355px;
+  left:61px;
+
+  display:flex;
+  justify-content:space-between;
+}
+
+.human-leg{
+  width:64px;
+  height:285px;
+
+  position:relative;
+}
+
+.thigh-muscle{
+  width:64px;
+  height:137px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #444,
+      #c5c5c5 45%,
+      #444
+    );
+
+  border-radius:34px 34px 25px 25px;
+}
+
+.knee-muscle{
+  width:49px;
+  height:43px;
+
+  margin:auto;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(circle,#aaa,#555);
+}
+
+.calf-muscle{
+  width:51px;
+  height:80px;
+
+  margin:auto;
+
+  background:
+    linear-gradient(
+      110deg,
+      #444,
+      #b9b9b9,
+      #444
+    );
+
+  border-radius:30px;
+}
+
+.human-foot{
+  width:72px;
+  height:27px;
+
+  background:#555;
+
+  border-radius:25px 38px 10px 10px;
+}
+
+.left-leg .human-foot{
+  margin-left:-8px;
+}
+
+
+/* BACK VIEW */
+
+.human-body.back-view .chest,
+.human-body.back-view .abs,
+.human-body.back-view .oblique{
+  display:none;
+}
+
+.human-body.back-view .lats{
+  display:block;
+}
+
+.human-body.back-view .trapezius{
+  display:block;
+}
+
+
+/* =====================================================
+   BEGINNER HUB EQUIPMENT
+===================================================== */
+
+.hub-equipment{
+  position:absolute;
+  z-index:2;
+  opacity:.9;
+}
+
+
+/* DUMBBELL RACK */
+
+.dumbbell-rack{
+  width:170px;
+  height:150px;
+
+  left:25px;
+  bottom:120px;
+}
+
+.rack-frame{
+  position:absolute;
+
+  left:20px;
+  right:20px;
+  bottom:15px;
+
+  height:7px;
+
+  background:#383838;
+}
+
+.rack-frame:before,
+.rack-frame:after{
+  content:"";
+
+  position:absolute;
+
+  width:8px;
+  height:115px;
+
+  bottom:0;
+
+  background:#333;
+}
+
+.rack-frame:before{
+  left:0;
+}
+
+.rack-frame:after{
+  right:0;
+}
+
+.rack-dumbbell{
+  position:absolute;
+
+  width:72px;
+  height:15px;
+}
+
+.rack-dumbbell i{
+  position:absolute;
+
+  left:20px;
+
+  width:32px;
+  height:7px;
+
+  top:4px;
+
+  background:#aaa;
+}
+
+.rack-dumbbell b,
+.rack-dumbbell em{
+  position:absolute;
+
+  width:18px;
+  height:27px;
+
+  top:-2px;
+
+  background:#222;
+
+  border:3px solid #666;
+
+  border-radius:5px;
+}
+
+.rack-dumbbell b{
+  left:0;
+}
+
+.rack-dumbbell em{
+  right:0;
+}
+
+.db-one{
+  top:38px;
+  left:30px;
+}
+
+.db-two{
+  top:72px;
+  left:55px;
+
+  transform:scale(.9);
+}
+
+.db-three{
+  top:103px;
+  left:18px;
+
+  transform:scale(.78);
+}
+
+
+/* CABLE STATION */
+
+.cable-station{
+  width:145px;
+  height:390px;
+
+  right:15px;
+  top:145px;
+}
+
+.machine-top{
+  position:absolute;
+
+  left:5px;
+  right:5px;
+
+  top:0;
+
+  height:10px;
+
+  background:#383838;
+}
+
+.machine-side{
+  position:absolute;
+
+  width:9px;
+  height:390px;
+
+  background:#303030;
+}
+
+.machine-side.left{
+  left:5px;
+}
+
+.machine-side.right{
+  right:5px;
+}
+
+.machine-pulley{
+  position:absolute;
+
+  width:23px;
+  height:23px;
+
+  top:25px;
+  left:61px;
+
+  border:5px solid #777;
+
+  border-radius:50%;
+}
+
+.machine-cable{
+  position:absolute;
+
+  width:3px;
+  height:245px;
+
+  top:45px;
+  left:71px;
+
+  background:#aaa;
+}
+
+.machine-handle{
+  position:absolute;
+
+  width:55px;
+  height:9px;
+
+  left:45px;
+  bottom:75px;
+
+  border:3px solid #777;
+  border-radius:10px;
+}
+
+
+/* BENCH */
+
+.bench-equipment{
+  width:180px;
+  height:90px;
+
+  right:40px;
+  bottom:90px;
+
+  transform:rotate(-5deg);
+}
+
+.hub-bench{
+  width:160px;
+  height:28px;
+
+  position:absolute;
+
+  top:15px;
+  left:10px;
+
+  background:#292929;
+
+  border-radius:8px;
+
+  box-shadow:inset 0 -6px 0 #181818;
+}
+
+.hub-bench-leg{
+  width:8px;
+  height:65px;
+
+  position:absolute;
+
+  top:40px;
+  left:55px;
+
+  background:#3b3b3b;
+
+  box-shadow:55px 0 #3b3b3b;
+}
+
+
+/* FLOOR */
+
+.body-ground{
+  width:520px;
+  height:100px;
+
+  position:absolute;
+
+  bottom:25px;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.7);
+
+  filter:blur(10px);
+}
+
+.anatomy-glow{
+  width:260px;
+  height:260px;
+
+  position:absolute;
+
+  border-radius:50%;
+
+  background:rgba(166,255,0,.12);
+
+  filter:blur(75px);
+}
+
+
+/* =====================================================
+   MUSCLE INFORMATION
+===================================================== */
+
+.muscle-information{
+  min-height:570px;
+
+  padding:30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #121212,
+      #080808
+    );
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow);
+}
+
+.selected-tag{
+  margin-bottom:13px;
+
+  color:var(--lime);
+
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .selected-tag{
+  letter-spacing:0;
+}
+
+.muscle-information h3{
+  margin-bottom:15px;
+
+  font-size:48px;
+  line-height:.95;
+
+  letter-spacing:-2px;
+}
+
+body[dir="rtl"] .muscle-information h3{
+  letter-spacing:0;
+  line-height:1.25;
+}
+
+.scientific-label{
+  margin-bottom:25px;
+
+  color:#777;
+
+  font-size:9px;
+  line-height:1.7;
+}
+
+.scientific-label strong{
+  color:#ddd;
+  font-style:italic;
+}
+
+#muscleDescription{
+  margin-bottom:25px;
+
+  color:#999;
+
+  font-size:12px;
+  line-height:1.8;
+}
+
+.target-box{
+  margin-bottom:25px;
+  padding:15px;
+
+  border-left:2px solid var(--lime);
+
+  background:#0b0b0b;
+}
+
+body[dir="rtl"] .target-box{
+  border-left:0;
+  border-right:2px solid var(--lime);
+}
+
+.target-box span{
+  display:block;
+
+  margin-bottom:5px;
+
+  color:#666;
+
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .target-box span{
+  letter-spacing:0;
+}
+
+.target-box strong{
+  font-size:12px;
+}
+
+.muscle-information h4{
+  margin-bottom:10px;
+
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .muscle-information h4{
+  letter-spacing:0;
+}
+
+.exercise-list{
+  max-height:225px;
+
+  display:grid;
+
+  gap:7px;
+
+  overflow-y:auto;
+}
+
+.exercise-item{
+  padding:12px;
+
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  background:#0d0d0d;
+
+  border:1px solid var(--line);
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.exercise-item:hover,
+.exercise-item.active{
+  background:#151c0b;
+  border-color:var(--lime);
+}
+
+.exercise-item-icon{
+  width:36px;
+  height:36px;
+
+  flex:none;
+
+  display:grid;
+  place-items:center;
+
+  color:var(--lime);
+
+  border:1px solid #333;
+
+  font-size:16px;
+}
+
+.exercise-item strong{
+  display:block;
+
+  font-size:9px;
+}
+
+.exercise-item small{
+  display:block;
+
+  margin-top:4px;
+
+  color:#666;
+
+  font-size:7px;
+}
+
+
+/* =====================================================
+   EXERCISE SHOWCASE
+===================================================== */
+
+.exercise-demonstrator{
+  max-width:1500px;
+
+  margin:100px auto 0;
+
+  background:#090909;
+
+  border:1px solid var(--line);
+
+  box-shadow:var(--shadow);
+}
+
+.demo-heading{
+  padding:30px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+
+  gap:25px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.demo-heading h3{
+  font-size:38px;
+  letter-spacing:-2px;
+}
+
+body[dir="rtl"] .demo-heading h3{
+  letter-spacing:0;
+}
+
+.demo-target{
+  text-align:right;
+}
+
+body[dir="rtl"] .demo-target{
+  text-align:left;
+}
+
+.demo-target span{
+  display:block;
+
+  color:#666;
+
+  font-size:7px;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .demo-target span{
+  letter-spacing:0;
+}
+
+.demo-target strong{
+  color:var(--lime);
+  font-size:11px;
+}
+
+
+/* DEMO SCENE */
+
+.demo-layout{
+  display:grid;
+
+  grid-template-columns:1.45fr 1fr;
+}
+
+.exercise-scene{
+  height:570px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(166,255,0,.09),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #151515,
+      #050505
+    );
+}
+
+.scene-light{
+  width:250px;
+  height:250px;
+
+  position:absolute;
+
+  top:50px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:50%;
+
+  background:rgba(166,255,0,.07);
+
+  filter:blur(50px);
+}
+
+.scene-floor{
+  width:100%;
+  height:34%;
+
+  position:absolute;
+  bottom:0;
+
+  border-top:1px solid rgba(166,255,0,.12);
+
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+  background-size:40px 40px;
+
+  transform:
+    perspective(300px)
+    rotateX(48deg);
+
+  transform-origin:bottom;
+}
+
+
+/* DEMO BENCH */
+
+.demo-bench{
+  width:250px;
+  height:35px;
+
+  position:absolute;
+
+  left:50%;
+  top:280px;
+
+  transform:translateX(-50%);
+
+  z-index:2;
+}
+
+.bench-pad{
+  width:250px;
+  height:28px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #383838,
+      #151515
+    );
+
+  border-radius:9px;
+}
+
+.bench-leg{
+  width:10px;
+  height:105px;
+
+  position:absolute;
+
+  top:25px;
+
+  background:#353535;
+}
+
+.bench-leg.left{
+  left:30px;
+}
+
+.bench-leg.right{
+  right:30px;
+}
+
+.bench-support{
+  width:10px;
+  height:90px;
+
+  position:absolute;
+
+  top:-80px;
+
+  background:#3d3d3d;
+}
+
+.bench-support.left{
+  left:23px;
+}
+
+.bench-support.right{
+  right:23px;
+}
+
+
+/* DEMO HUMAN */
+
+.demo-person{
+  width:115px;
+  height:430px;
+
+  position:absolute;
+
+  top:78px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  z-index:5;
+}
+
+.demo-head{
+  width:46px;
+  height:53px;
+
+  position:absolute;
+
+  left:35px;
+  top:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      #e0e0e0,
+      #888,
+      #3c3c3c
+    );
+
+  border-radius:50%;
+}
+
+.demo-neck{
+  width:26px;
+  height:30px;
+
+  position:absolute;
+
+  left:45px;
+  top:45px;
+
+  background:#888;
+}
+
+.demo-body{
+  width:82px;
+  height:135px;
+
+  position:absolute;
+
+  top:68px;
+  left:16px;
+
+  background:
+    linear-gradient(
+      105deg,
+      #4a4a4a,
+      #c7c7c7 45%,
+      #555
+    );
+
+  border-radius:35px 35px 16px 16px;
+}
+
+.demo-chest{
+  width:65px;
+  height:50px;
+
+  position:absolute;
+
+  left:8px;
+  top:12px;
+
+  border-radius:50%;
+
+  background:rgba(166,255,0,.48);
+
+  box-shadow:
+    0 0 22px rgba(166,255,0,.55);
+}
+
+.demo-ab{
+  width:32px;
+  height:60px;
+
+  position:absolute;
+
+  left:25px;
+  top:66px;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #bdbdbd 0 8px,
+      #555 9px 12px
+    );
+
+  opacity:.65;
+}
+
+
+/* DEMO ARMS */
+
+.demo-arm{
+  width:34px;
+  height:145px;
+
+  position:absolute;
+
+  top:72px;
+
+  transform-origin:top;
+}
+
+.demo-arm.left{
+  left:-5px;
+  transform:rotate(28deg);
+}
+
+.demo-arm.right{
+  right:-5px;
+  transform:rotate(-28deg);
+}
+
+.demo-upper-arm{
+  width:23px;
+  height:70px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #454545,
+      #ccc,
+      #444
+    );
+
+  border-radius:20px;
+}
+
+.demo-forearm{
+  width:18px;
+  height:67px;
+
+  margin-left:3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #444,
+      #bbb,
+      #444
+    );
+
+  border-radius:20px;
+}
+
+.demo-hand{
+  width:18px;
+  height:20px;
+
+  margin-left:3px;
+
+  background:#999;
+
+  border-radius:50%;
+}
+
+.demo-hand i{
+  display:block;
+
+  width:7px;
+  height:3px;
+
+  margin:7px auto;
+
+  background:#555;
+}
+
+
+/* DEMO LEGS */
+
+.demo-leg{
+  width:35px;
+  height:220px;
+
+  position:absolute;
+
+  top:195px;
+}
+
+.demo-leg.left{
+  left:14px;
+}
+
+.demo-leg.right{
+  right:14px;
+}
+
+.demo-thigh{
+  width:35px;
+  height:105px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #444,
+      #ccc,
+      #444
+    );
+
+  border-radius:20px;
+}
+
+.demo-shin{
+  width:26px;
+  height:90px;
+
+  margin:auto;
+
+  background:
+    linear-gradient(
+      90deg,
+      #444,
+      #bbb,
+      #444
+    );
+
+  border-radius:20px;
+}
+
+.demo-foot{
+  width:45px;
+  height:17px;
+
+  background:#555;
+
+  border-radius:15px;
+}
+
+
+/* BARBELL */
+
+.demo-barbell{
+  width:460px;
+  height:120px;
+
+  position:absolute;
+
+  left:50%;
+  top:105px;
+
+  transform:translateX(-50%);
+
+  z-index:8;
+}
+
+.barbell-bar{
+  width:100%;
+  height:7px;
+
+  position:absolute;
+
+  top:56px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #777,
+      #eee,
+      #888
+    );
+
+  box-shadow:0 0 12px rgba(255,255,255,.2);
+}
+
+.barbell-plate{
+  width:45px;
+  height:100px;
+
+  position:absolute;
+
+  top:9px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #171717,
+      #555,
+      #171717
+    );
+
+  border:5px solid #777;
+
+  border-radius:7px;
+}
+
+.plate-left-one{
+  left:30px;
+}
+
+.plate-left-two{
+  left:78px;
+  height:82px;
+  top:18px;
+}
+
+.plate-right-one{
+  right:78px;
+  height:82px;
+  top:18px;
+}
+
+.plate-right-two{
+  right:30px;
+}
+
+.barbell-collar{
+  width:10px;
+  height:28px;
+
+  position:absolute;
+
+  top:45px;
+
+  background:#aaa;
+}
+
+.barbell-collar.left{
+  left:123px;
+}
+
+.barbell-collar.right{
+  right:123px;
+}
+
+
+/* CABLE MACHINE */
+
+.demo-cable-machine{
+  width:115px;
+  height:370px;
+
+  position:absolute;
+
+  right:35px;
+  top:85px;
+
+  z-index:1;
+
+  opacity:0;
+}
+
+.cable-frame{
+  position:absolute;
+
+  left:5px;
+  right:5px;
+  bottom:0;
+
+  height:360px;
+
+  border:8px solid #292929;
+  border-bottom:0;
+}
+
+.cable-top{
+  width:115px;
+  height:9px;
+
+  position:absolute;
+
+  top:0;
+
+  background:#555;
+}
+
+.cable-pulley{
+  width:25px;
+  height:25px;
+
+  position:absolute;
+
+  top:22px;
+  left:43px;
+
+  border:5px solid #888;
+
+  border-radius:50%;
+}
+
+.cable-line{
+  width:3px;
+  height:230px;
+
+  position:absolute;
+
+  top:45px;
+  left:55px;
+
+  background:#aaa;
+}
+
+.cable-handle{
+  width:60px;
+  height:12px;
+
+  position:absolute;
+
+  left:27px;
+  bottom:75px;
+
+  border:3px solid #888;
+
+  border-radius:10px;
+}
+
+
+/* DUMBBELLS */
+
+.demo-dumbbells{
+  position:absolute;
+
+  inset:0;
+
+  z-index:7;
+
+  opacity:0;
+}
+
+.demo-dumbbell{
+  width:90px;
+  height:20px;
+
+  position:absolute;
+
+  top:165px;
+}
+
+.demo-dumbbell i{
+  width:50px;
+  height:7px;
+
+  position:absolute;
+
+  left:20px;
+  top:6px;
+
+  background:#aaa;
+}
+
+.demo-dumbbell b,
+.demo-dumbbell em{
+  width:22px;
+  height:38px;
+
+  position:absolute;
+
+  top:-9px;
+
+  background:#222;
+
+  border:4px solid #777;
+
+  border-radius:6px;
+}
+
+.demo-dumbbell b{
+  left:0;
+}
+
+.demo-dumbbell em{
+  right:0;
+}
+
+.dumbbell-left{
+  left:34%;
+  transform:rotate(-8deg);
+}
+
+.dumbbell-right{
+  right:34%;
+  transform:rotate(8deg);
+}
+
+
+/* EQUIPMENT LABELS */
+
+.equipment-label{
+  position:absolute;
+
+  padding:7px 10px;
+
+  color:#777;
+
+  background:rgba(5,5,5,.8);
+
+  border:1px solid var(--line);
+
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:2px;
+
+  z-index:15;
+}
+
+.bar-label{
+  left:45px;
+  top:75px;
+}
+
+.cable-label{
+  right:25px;
+  top:65px;
+}
+
+.dumbbell-label{
+  left:25px;
+  bottom:75px;
+}
+
+
+/* CABLE MODE */
+
+.exercise-scene.cable-mode .demo-barbell,
+.exercise-scene.cable-mode .demo-bench{
+  opacity:0;
+}
+
+.exercise-scene.cable-mode .demo-cable-machine{
+  opacity:1;
+}
+
+.exercise-scene.cable-mode .cable-label{
+  color:var(--lime);
+  border-color:var(--lime);
+}
+
+
+/* DUMBBELL MODE */
+
+.exercise-scene.dumbbell-mode .demo-barbell{
+  opacity:0;
+}
+
+.exercise-scene.dumbbell-mode .demo-dumbbells{
+  opacity:1;
+}
+
+.exercise-scene.dumbbell-mode .dumbbell-label{
+  color:var(--lime);
+  border-color:var(--lime);
+}
+
+
+/* NO EQUIPMENT */
+
+.exercise-scene.bodyweight-mode .demo-barbell,
+.exercise-scene.bodyweight-mode .demo-bench,
+.exercise-scene.bodyweight-mode .demo-cable-machine,
+.exercise-scene.bodyweight-mode .demo-dumbbells{
+  opacity:0;
+}
+
+
+/* TECHNIQUE */
+
+.technique-panel{
+  padding:35px;
+
+  background:#0c0c0c;
+
+  border-left:1px solid var(--line);
+}
+
+body[dir="rtl"] .technique-panel{
+  border-left:0;
+  border-right:1px solid var(--line);
+}
+
+.movement-card{
+  padding:22px 0;
+
+  display:grid;
+
+  grid-template-columns:45px 1fr;
+
+  gap:15px;
+
+  border-bottom:1px solid var(--line);
+}
+
+.movement-number{
+  color:var(--lime);
+
+  font-size:12px;
+  font-weight:900;
+}
+
+.movement-card strong{
+  font-size:9px;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .movement-card strong{
+  letter-spacing:0;
+}
+
+.movement-card p{
+  margin-top:7px;
+
+  color:#888;
+
+  font-size:11px;
+
+  line-height:1.7;
+}
+
+.demo-equipment-info{
+  margin-top:25px;
+
+  padding:18px;
+
+  border-left:2px solid var(--lime);
+
+  background:#111;
+}
+
+body[dir="rtl"] .demo-equipment-info{
+  border-left:0;
+  border-right:2px solid var(--lime);
+}
+
+.demo-equipment-info span{
+  display:block;
+
+  margin-bottom:6px;
+
+  color:#666;
+
+  font-size:7px;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .demo-equipment-info span{
+  letter-spacing:0;
+}
+
+.demo-equipment-info strong{
+  color:#ddd;
+  font-size:11px;
+}
+
+
+/* =====================================================
+   ROADMAP
+===================================================== */
+
+.beginner-roadmap{
+  max-width:1500px;
+
+  margin:100px auto 0;
+}
+
+.roadmap-heading{
+  margin-bottom:40px;
+}
+
+.roadmap-heading h3{
+  font-size:45px;
+  letter-spacing:-2px;
+}
+
+body[dir="rtl"] .roadmap-heading h3{
+  letter-spacing:0;
+}
+
+.roadmap-heading h3 span{
+  color:var(--lime);
+}
+
+.roadmap-grid{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  gap:12px;
+}
+
+.roadmap-card{
+  min-height:250px;
+
+  padding:25px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:#0d0d0d;
+
+  border:1px solid var(--line);
+
+  transition:.3s;
+}
+
+.roadmap-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--lime);
+}
+
+.roadmap-card>span{
+  color:#444;
+  font-size:11px;
+}
+
+.big-icon{
+  margin:30px 0 15px;
+
+  color:var(--lime);
+
+  font-size:38px;
+}
+
+.roadmap-card h4{
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+body[dir="rtl"] .roadmap-card h4{
+  letter-spacing:0;
+}
+
+.roadmap-card p{
+  margin-top:10px;
+
+  color:#777;
+
+  font-size:10px;
+
+  line-height:1.7;
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+.calendar-section{
+  background:#090909;
+}
+
+.calendar-box{
+  max-width:1250px;
+
+  margin:auto;
+
+  background:#0d0d0d;
+
+  border:1px solid var(--line);
+}
+
+.calendar-header{
+  min-height:100px;
+
+  padding:20px 30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  text-align:center;
+
+  border-bottom:1px solid var(--line);
+}
+
+.calendar-header button{
+  width:45px;
+  height:45px;
+
+  background:#151515;
+
+  color:var(--lime);
+
+  border:1px solid var(--line);
+}
+
+.calendar-header span{
+  display:block;
+
+  color:#666;
+
+  font-size:7px;
+  letter-spacing:2px;
+}
+
+.calendar-header strong{
+  display:block;
+
+  margin-top:5px;
+
+  font-size:12px;
+}
+
+.week-grid{
+  display:grid;
+
+  grid-template-columns:repeat(7,1fr);
+}
+
+.day-card{
+  min-height:200px;
+
+  padding:20px 12px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:20px;
+
+  border-right:1px solid var(--line);
+}
+
+.day-card:last-child{
+  border-right:0;
+}
+
+.day-card span{
+  color:#666;
+
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.day-card strong{
+  font-size:32px;
+}
+
+.day-card button{
+  width:35px;
+  height:35px;
+
+  margin-top:auto;
+
+  background:#151515;
+
+  color:var(--lime);
+
+  border:1px solid #333;
+}
+
+.day-card.scheduled{
+  background:#141d08;
+
+  border-top:2px solid var(--lime);
+}
+
+.day-card.scheduled button{
+  color:#000;
+  background:var(--lime);
+}
+
+.day-card.rest-day strong{
+  color:#666;
+  font-size:13px;
+}
+
+.calendar-note{
+  padding:20px;
+
+  display:flex;
+  gap:15px;
+
+  color:#777;
+
+  border-top:1px solid var(--line);
+
+  font-size:9px;
+  line-height:1.7;
+}
+
+.calendar-note span{
+  color:var(--lime);
+  font-size:20px;
+}
+
+
+/* =====================================================
+   CALCULATOR
+===================================================== */
+
+.calculator-section{
+  background:
+    radial-gradient(circle at 80% 20%,rgba(166,255,0,.04),transparent 25%),
+    #050505;
+}
+
+.calculator{
+  max-width:1100px;
+
+  margin:auto;
+  padding:35px;
+
+  background:#0c0c0c;
+
+  border:1px solid var(--line);
+}
+
+.calculator-inputs{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+}
+
+.calculator label span{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#777;
+
+  font-size:8px;
+}
+
+.calculator input{
+  width:100%;
+  height:50px;
+
+  padding:0 15px;
+
+  color:#fff;
+  background:#151515;
+
+  border:1px solid #292929;
+
+  outline:none;
+}
+
+.calculator input:focus{
+  border-color:var(--lime);
+}
+
+.calculate-btn{
+  width:100%;
+
+  margin:25px 0;
+}
+
+.calculator-results{
+  display:grid;
+
+  grid-template-columns:repeat(4,1fr);
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.calculator-results>div{
+  padding:25px 15px;
+
+  text-align:center;
+
+  border-right:1px solid var(--line);
+}
+
+.calculator-results>div:last-child{
+  border-right:0;
+}
+
+.calculator-results span{
+  display:block;
+
+  color:#666;
+
+  font-size:7px;
+  letter-spacing:1px;
+}
+
+.calculator-results strong{
+  display:block;
+
+  margin-top:8px;
+
+  color:var(--lime);
+
+  font-size:23px;
+}
+
+
+/* =====================================================
+   PRICING
+===================================================== */
+
+.pricing-section{
+  background:#090909;
+}
+
+.pricing-grid{
+  max-width:1200px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+}
+
+.price-card{
+  min-height:490px;
+
+  padding:30px;
+
+  display:flex;
+  flex-direction:column;
+
+  position:relative;
+
+  background:#0d0d0d;
+
+  border:1px solid var(--line);
+
+  transition:.3s;
+}
+
+.price-card:hover,
+.price-card.featured{
+  transform:translateY(-7px);
+
+  border-color:var(--lime);
+}
+
+.price-card.featured{
+  background:
+    linear-gradient(
+      145deg,
+      #151c0b,
+      #0b0b0b
+    );
+}
+
+.popular{
+  position:absolute;
+
+  top:0;
+  right:0;
+
+  padding:9px 13px;
+
+  color:#000;
+  background:var(--lime);
+
+  font-size:7px;
+  font-weight:900;
+}
+
+.price-number{
+  color:#555;
+  font-size:11px;
+}
+
+.price-card h3{
+  margin-top:50px;
+
+  font-size:27px;
+}
+
+.price{
+  margin:10px 0;
+
+  color:var(--lime);
+
+  font-size:30px;
+  font-weight:900;
+}
+
+.price-card>p:not(.price){
+  color:#777;
+
+  font-size:10px;
+  line-height:1.7;
+}
+
+.price-card ul{
+  margin:25px 0;
+
+  list-style:none;
+}
+
+.price-card li{
+  padding:9px 0;
+
+  color:#aaa;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:9px;
+}
+
+.price-card li:before{
+  content:"✓";
+
+  margin-right:8px;
+
+  color:var(--lime);
+}
+
+.price-card .btn{
+  margin-top:auto;
+}
+
+
+/* =====================================================
+   COACHES
+===================================================== */
+
+.coaches-grid{
+  margin-top:70px;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+}
+
+.coach-card{
+  padding-bottom:25px;
+
+  background:#0c0c0c;
+
+  border:1px solid var(--line);
+}
+
+.coach-photo{
+  height:330px;
+
+  display:grid;
+  place-items:center;
+
+  position:relative;
+
+  background:
+    radial-gradient(circle at 50% 35%,#333,#080808 70%);
+}
+
+.coach-photo>span{
+  position:absolute;
+
+  top:15px;
+  left:15px;
+
+  color:var(--lime);
+
+  font-size:9px;
+}
+
+.photo-placeholder{
+  width:110px;
+  height:110px;
+
+  display:grid;
+  place-items:center;
+
+  color:#444;
+
+  border:1px dashed #444;
+  border-radius:50%;
+
+  font-size:8px;
+}
+
+.coach-card h3{
+  margin:25px 25px 0;
+
+  font-size:16px;
+}
+
+.coach-card p{
+  margin:8px 25px 0;
+
+  color:#666;
+
+  font-size:9px;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote-section{
+  min-height:450px;
+
+  padding:80px 7vw;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:
+    radial-gradient(circle,rgba(166,255,0,.08),transparent 40%),
+    #080808;
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.quote-mark{
+  color:var(--lime);
+
+  font-size:100px;
+
+  line-height:.5;
+}
+
+blockquote{
+  max-width:900px;
+
+  font-size:clamp(30px,5vw,65px);
+
+  font-weight:900;
+
+  line-height:1;
+
+  letter-spacing:-3px;
+}
+
+body[dir="rtl"] blockquote{
+  letter-spacing:0;
+  line-height:1.4;
+}
+
+.quote-section>span{
+  margin-top:30px;
+
+  color:#555;
+
+  font-size:8px;
+
+  letter-spacing:4px;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-section{
+  background:#050505;
+}
+
+.gallery-grid{
+  max-width:1300px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  grid-auto-rows:260px;
+
+  gap:12px;
+}
+
+.gallery-item.large{
+  grid-column:span 2;
+}
+
+.gallery-placeholder{
+  width:100%;
+  height:100%;
+
+  padding:25px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181818,
+      #090909
+    );
+
+  border:1px solid var(--line);
+}
+
+.gallery-placeholder:before{
+  content:"";
+
+  width:220px;
+  height:220px;
+
+  position:absolute;
+
+  top:-90px;
+  right:-60px;
+
+  border-radius:50%;
+
+  background:rgba(166,255,0,.07);
+
+  filter:blur(10px);
+}
+
+.gallery-placeholder span{
+  color:var(--lime);
+
+  font-size:7px;
+  letter-spacing:2px;
+}
+
+.gallery-placeholder strong{
+  margin-top:6px;
+
+  font-size:20px;
+}
+
+
+/* =====================================================
+   REVIEWS
+===================================================== */
+
+.reviews-section{
+  background:#090909;
+}
+
+.review-box{
+  max-width:1200px;
+
+  margin:auto;
+  padding:55px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:50px;
+
+  background:#0e0e0e;
+
+  border:1px solid var(--line);
+}
+
+.review-action{
+  max-width:330px;
+}
+
+.stars{
+  margin-bottom:15px;
+
+  color:var(--lime);
+
+  letter-spacing:4px;
+}
+
+.review-action p{
+  margin-bottom:20px;
+
+  color:#777;
+
+  font-size:10px;
+  line-height:1.7;
+}
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+.location-section{
+  background:#050505;
+}
+
+.location-content{
+  max-width:1350px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:.75fr 1.25fr;
+
+  gap:50px;
+
+  align-items:stretch;
+}
+
+.location-text{
+  margin:30px 0;
+
+  color:#777;
+
+  font-size:13px;
+}
+
+.location-buttons{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:10px;
+}
+
+.map-container{
+  min-height:470px;
+
+  overflow:hidden;
+
+  background:#111;
+
+  border:1px solid var(--line);
+}
+
+.map-container iframe{
+  width:100%;
+  height:100%;
+  min-height:470px;
+
+  border:0;
+
+  filter:
+    grayscale(1)
+    contrast(1.1);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+  padding:60px 7vw 25px;
+
+  background:#030303;
+
+  border-top:1px solid var(--line);
+}
+
+.footer-main{
+  display:grid;
+
+  grid-template-columns:1.5fr 1fr 1fr;
+
+  gap:40px;
+}
+
+.footer-main p{
+  margin-top:10px;
+
+  color:#555;
+
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+.footer-links,
+.footer-social{
+  display:flex;
+  flex-direction:column;
+
+  gap:12px;
+}
+
+.footer-links a,
+.footer-social a{
+  color:#777;
+
+  font-size:9px;
+}
+
+.footer-links a:hover,
+.footer-social a:hover{
+  color:var(--lime);
+}
+
+.footer-bottom{
+  margin-top:50px;
+  padding-top:20px;
+
+  display:flex;
+  justify-content:space-between;
+
+  color:#444;
+
+  border-top:1px solid var(--line);
+
+  font-size:7px;
+  letter-spacing:1px;
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.floating-whatsapp{
+  width:58px;
+  height:58px;
+
+  position:fixed;
+
+  right:22px;
+  bottom:22px;
+
+  z-index:900;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  color:#000;
+
+  background:var(--lime);
+
+  font-size:10px;
+  font-weight:900;
+
+  box-shadow:
+    0 12px 35px rgba(166,255,0,.25);
+
+  transition:.25s;
+}
+
+.floating-whatsapp:hover{
+  transform:scale(1.08);
+}
+
+
+/* =====================================================
+   RTL FIXES
+===================================================== */
+
+body[dir="rtl"] .hero-description,
+body[dir="rtl"] .about-copy p,
+body[dir="rtl"] #muscleDescription,
+body[dir="rtl"] .movement-card p,
+body[dir="rtl"] .roadmap-card p,
+body[dir="rtl"] .calendar-note,
+body[dir="rtl"] .price-card p,
+body[dir="rtl"] .coach-card p,
+body[dir="rtl"] .review-action p{
+  line-height:2;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1200px){
+
+  .navbar nav{
+    gap:12px;
+  }
+
+  .anatomy-layout{
+    grid-template-columns:190px minmax(400px,1fr);
+  }
+
+  .muscle-information{
+    grid-column:1/-1;
+  }
+
+  .exercise-list{
+    grid-template-columns:repeat(2,1fr);
+    max-height:none;
+  }
+
+}
+
+
+@media(max-width:950px){
+
+  .navbar{
+    min-height:70px;
+
+    flex-wrap:wrap;
+
+    padding:12px 5vw;
+  }
+
+  .navbar nav{
+    order:3;
+
+    width:100%;
+
+    overflow-x:auto;
+
+    padding-bottom:5px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+
+    padding-top:180px;
+  }
+
+  .hero-visual{
+    height:420px;
+  }
+
+  .about-grid,
+  .location-content{
+    grid-template-columns:1fr;
+
+    gap:45px;
+  }
+
+  .anatomy-layout{
+    grid-template-columns:1fr;
+  }
+
+  .muscle-menu{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .view-buttons{
+    grid-column:1/-1;
+  }
+
+  .anatomy-stage{
+    height:680px;
+  }
+
+  .demo-layout{
+    grid-template-columns:1fr;
+  }
+
+  .technique-panel{
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+
+  body[dir="rtl"] .technique-panel{
+    border-right:0;
+    border-top:1px solid var(--line);
+  }
+
+  .roadmap-grid,
+  .pricing-grid,
+  .coaches-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .week-grid{
+    overflow-x:auto;
+  }
+
+  .day-card{
+    min-width:130px;
+  }
+
+  .calculator-inputs{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .review-box{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+
+@media(max-width:650px){
+
+  .section{
+    padding:90px 5vw;
+  }
+
+  h2{
+    letter-spacing:-3px;
+  }
+
+  body[dir="rtl"] h2{
+    letter-spacing:0;
+  }
+
+  .hero h1{
+    letter-spacing:-6px;
+  }
+
+  body[dir="rtl"] .hero h1{
+    letter-spacing:0;
+  }
+
+  .hero-visual{
+    height:320px;
+  }
+
+  .hero-orb{
+    width:270px;
+    height:270px;
+  }
+
+  .ring-one{
+    width:330px;
+    height:170px;
+  }
+
+  .ring-two{
+    width:400px;
+    height:200px;
+  }
+
+  .stats-grid,
+  .roadmap-grid,
+  .pricing-grid,
+  .coaches-grid{
+    grid-template-columns:1fr;
+  }
+
+  .muscle-menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .anatomy-stage{
+    height:610px;
+  }
+
+  .human-body{
+    transform:scale(.83);
+  }
+
+  .hub-equipment{
+    transform:scale(.7);
+  }
+
+  .cable-station{
+    right:-20px;
+  }
+
+  .dumbbell-rack{
+    left:-25px;
+  }
+
+  .exercise-list{
+    grid-template-columns:1fr;
+  }
+
+  .demo-heading{
+    flex-direction:column;
+
+    align-items:flex-start;
+  }
+
+  .demo-target{
+    text-align:left;
+  }
+
+  body[dir="rtl"] .demo-target{
+    text-align:right;
+  }
+
+  .exercise-scene{
+    height:450px;
+  }
+
+  .calculator-inputs,
+  .calculator-results{
+    grid-template-columns:1fr;
+  }
+
+  .calculator-results>div{
+    border-right:0;
+
+    border-bottom:1px solid var(--line);
+  }
+
+  .gallery-grid{
+    grid-template-columns:1fr;
+
+    grid-auto-rows:230px;
+  }
+
+  .gallery-item.large{
+    grid-column:span 1;
+  }
+
+  .review-box{
+    padding:30px;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+
+    gap:10px;
+  }
+
+  .floating-whatsapp{
+    width:52px;
+    height:52px;
+
+    right:15px;
+    bottom:15px;
+  }
+
+}
